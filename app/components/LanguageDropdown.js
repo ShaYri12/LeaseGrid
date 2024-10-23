@@ -16,13 +16,15 @@ const LanguageDropdown = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Only run this in the client environment
     if (typeof window !== "undefined") {
       const savedLang = localStorage.getItem("selectedLanguage") || "en"; // Default to "en"
-      const selectedLang = languages.find((lang) => lang.code === savedLang) || languages[0];
+      const selectedLang =
+        languages.find((lang) => lang.code === savedLang) || languages[0];
       setCurrentLang(selectedLang);
       i18n.changeLanguage(selectedLang.code); // Set the initial language
     }
-  }, [i18n]);
+  }, []);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -31,6 +33,7 @@ const LanguageDropdown = () => {
     if (typeof window !== "undefined") {
       localStorage.setItem("selectedLanguage", lng);
       setIsOpen(false);
+
       // Use pathname to update the URL
       const newPath = lng === "en" ? "/en" : "/de";
       window.history.pushState({}, "", newPath);
