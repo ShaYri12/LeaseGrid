@@ -17,7 +17,6 @@ const LanguagePage = () => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    // Function to get language from the URL or localStorage
     const getLanguage = () => {
       if (typeof window !== "undefined") {
         const pathLang = window.location.pathname.split("/")[1]; // Get language from URL
