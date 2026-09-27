@@ -9,6 +9,7 @@ export async function generateStaticParams() {
 }
 
 // Server Component - wraps the client component
-export default function LanguagePage({ params }) {
-  return <LanguagePageClient lang={params.lang} />;
+export default async function LanguagePage({ params }) {
+  const { lang } = await params;
+  return <LanguagePageClient lang={lang} />;
 }
