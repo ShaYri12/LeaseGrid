@@ -51,12 +51,12 @@ const LanguagePage = () => {
   );
 };
 
-// Static paths for languages
-export const getStaticPaths = async () => {
-  return {
-    paths: [{ params: { lang: "en" } }, { params: { lang: "de" } }],
-    fallback: false, // Return a 404 page for any other paths
-  };
-};
+// Generate static params for languages (App Router)
+export async function generateStaticParams() {
+  return [
+    { lang: "en" },
+    { lang: "de" }
+  ];
+}
 
 export default LanguagePage;
